@@ -30,13 +30,13 @@ int is_point_in_circle(double x, double y) {
 int main()
 {
     // how many to test with
-    int sum = 1000000;
+    long sum = 1000000;
 
     // how many that are in the circle
-    int in_circle = 0;
+    long in_circle = 0;
 
     // generate random coordinates and test how many are in the circle
-    int i;
+    long i;
     for (i = 0; i <= sum; ++i)
     {
         double random_x = double_rand();
@@ -49,12 +49,16 @@ int main()
     }
 
     // pi!
-    int outside_circle = sum - in_circle;
+    long outside_circle = sum - in_circle;
 
     printf("IN\tOUT\tTOT\n");
     printf("%d\t%d\t%d\n", in_circle, outside_circle, sum);
 
-    double pi = (double) in_circle / (double) outside_circle;
+    // area fraction
+    double af = (double) in_circle / (double) outside_circle;
+
+    // calculate pi estimate
+    double pi = (4 * af) / (1 + af);
 
     printf("pi: %lf\n", pi);
 
